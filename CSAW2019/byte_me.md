@@ -9,7 +9,7 @@ Connecting immediately prints a number of ciphertext blocks, which changes with 
 After sending a significant number of the same character, it is clear that identical ciphertext blocks are formed, indicating an AES-ECB type encryption.
 
 Solve Script:
-```
+```python
 from pwn import *
 
 # assume AES-ECB
