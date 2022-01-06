@@ -30,35 +30,35 @@ The challenge comes with a text file, assignment.txt.
 > PxRWnVY=
 > 
 > Upon further investigation, the following script was found:
-> 
->     #!/usr/bin/env python2
->     
->     import os
->     
->     import Crypto.Cipher.AES
->     import Crypto.Util.Counter
->     
->     from Messager import send
->     
->     
->     KEY = os.environ['key']
->     IV = os.environ['iv']
->     
->     secrets = open('/tmp/exfil.txt', 'r')
->     
->     for pt in secrets:
->         # initialize our counter
->         ctr = Crypto.Util.Counter.new(128, initial_value=long(IV.encode("hex"), 16))
->     
->         # create our cipher
->         cipher = Crypto.Cipher.AES.new(KEY, Crypto.Cipher.AES.MODE_CTR, counter=ctr)
->     
->         # encrypt the plaintext
->         ciphertext = cipher.encrypt(pt)
->     
->         # send the ciphertext
->         send(ciphertext.encode("base-64"))
-> 
+```python
+    #!/usr/bin/env python2
+    
+    import os
+    
+    import Crypto.Cipher.AES
+    import Crypto.Util.Counter
+    
+    from Messager import send
+    
+    
+    KEY = os.environ['key']
+    IV = os.environ['iv']
+    
+    secrets = open('/tmp/exfil.txt', 'r')
+    
+    for pt in secrets:
+        # initialize our counter
+        ctr = Crypto.Util.Counter.new(128, initial_value=long(IV.encode("hex"), 16))
+    
+        # create our cipher
+        cipher = Crypto.Cipher.AES.new(KEY, Crypto.Cipher.AES.MODE_CTR, counter=ctr)
+    
+        # encrypt the plaintext
+        ciphertext = cipher.encrypt(pt)
+    
+        # send the ciphertext
+        send(ciphertext.encode("base-64"))
+```
 > Unfortunately, the environment variables used for KEY and IV are no
 > longer recoverable and the file /tmp/exfil.txt has been deleted.
 > 
@@ -151,6 +151,7 @@ We don't need to specify whether we are trying to get plaintext from P1 or P2. I
 
 Ciphertexts index 16 and 20 were chosen because they were the two longest ciphertexts in the given set of 21.
 
+```python
     import base64
     import binascii
     import string
@@ -186,7 +187,7 @@ Ciphertexts index 16 and 20 were chosen because they were the two longest cipher
     			print(str(count) + ": " + check)
     
     	print("=======================================")
-
+```
 Here is a portion of the program output with the crib of `" the "` (5 characters long because of the leading and trailing space).
 ![Guess 1](https://lh3.googleusercontent.com/pw/ACtC-3eQZGL3Tfjkrvsx2DXE0ofMIp4EC-q0e95lJ9kjPS37RjItXnC1jit2bDEN8ApZWg8UEAMBuTT06TuO08w2ucHk1jXQHa-CBdUn__VNpqvceM7YkNe8im6iS-CfIXxCkCeBUiCX4UsRi1cvb0ag8EUZ=w438-h329-no?authuser=0)
 <br />
@@ -222,7 +223,7 @@ E<sub>C</sub> = C **⊕**  P
 
 The following script uses the known plaintext to find the encrypted counter E<sub>C</sub>, and then uses it to reveal all 21 blocks of ciphertext.
 
-```
+```python
 import base64
 import binascii
 import string
