@@ -10,7 +10,7 @@ The key to solving this is to recognize that you can increment a byte to it's de
 Assuming each new byte is empty, the following script will increment each byte to the desired value, then print them out.
 
 Solve Script:
-```
+```python
 desiredOutput = "aidanmccarthyalexanderheldstabjohneberlingmatthewfauerbachtylerharmon"
 
 length = len(desiredOutput)
