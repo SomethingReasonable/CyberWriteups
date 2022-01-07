@@ -1,11 +1,11 @@
 # CyberWriteups
 
-## Writeups Portion
+## Write-ups Portion
 Included here are a selection of write-ups for cyber challenges that I have solved while competing in intercollegiate competitions with the Cadet Competitive Cyber Team over the years.
 
-Over the course of the last few years, I have solved hundreds of challenges in competitions. However, many of my writeups exist on our team-internal repository, and I thought it more appropriate to just include a handful of write ups that mostly pertain to cryptography, since that is the field I am most interested in.
+Over the course of the last few years, I have solved hundreds of challenges in competitions. However, many of my write-ups exist on our team-internal repository, and I thought it more appropriate to just include a handful of write-ups that mostly pertain to cryptography, since that is the field I am most interested in.
 
-Every write up (and relevant challenge) in this repository was
+Every write-up (and relevant challenge) in this repository was
 * Solved entirely independently during competition
 * Written and produced independently
 
