@@ -23,6 +23,7 @@ Therefore, if we send two full blocks of identical plaintext, and the resulting 
 
 ## Solve Script
 
+```python
     from pwn import *
     import binascii
     
@@ -58,6 +59,8 @@ Therefore, if we send two full blocks of identical plaintext, and the resulting 
     flag = record.replace("E","0").replace("C","1")
     print(flag)
     print(binascii.unhexlify('%x' % int(flag, 2)))
+```
+
 The above script uses pwn tools to connect to the server and receive/send input accordingly.
 
 If the first and second blocks match, it sends ECB. If they don't match, it sends CBC.
